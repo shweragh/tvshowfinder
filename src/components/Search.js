@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import "./Search.css";
 import noImage from "../images/no-image.jpg";
+import Parser from 'html-react-parser';
+
 
 function Search() {
     const [data, setData] = useState([]);
@@ -31,7 +33,8 @@ function Search() {
     
 
     return (
-        <div>
+        <div >
+            
             <div className="header"><div className="title">Show Finder</div></div>
             <div>
                 <div className="container">
@@ -49,7 +52,7 @@ function Search() {
               {item.show.image != null ? <img alt="showimg" src={item.show.image.medium} className="show-Img-disp" /> : <img alt="noImage" src={noImage} className="show-Img-disp" />}
           <div className="show-description-container">
               <div className="show-title">{item.show.name}</div>
-              <div className="show-description">{item.show.summary}
+              <div className="show-description" >{Parser(item.show.summary)}
               </div>
               <div className="btn-show-episode">Show Episodes</div>
           </div>
